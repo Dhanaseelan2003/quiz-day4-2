@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int hasPairWithSum(int arr[], int size, int X) {
+    int visited[10000] = {0}; // Assuming the range of elements is within [0, 9999]
+
+    for (int i = 0; i < size; i++) {
+        int complement = X - arr[i];
+
+        if (visited[complement]) {
+            return 1; // Pair found
+        }
+
+        visited[arr[i]] = 1;
+    }
+
+    return 0; // No pair found
+}
+
+int main() {
+    int N1 = 6, X1 = 16;
+    int Arr1[] = {1, 4, 45, 6, 10, 8};
+    printf("Example 1:\n");
+    if (hasPairWithSum(Arr1, N1, X1)) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
+    }
+
+    int N2 = 5, X2 = 10;
+    int Arr2[] = {1, 2, 4, 3, 6};
+    printf("\nExample 2:\n");
+    if (hasPairWithSum(Arr2, N2, X2)) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
+    }
+
+    return 0;
+}
